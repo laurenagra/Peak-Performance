@@ -18,7 +18,7 @@ $(document).ready(function(){
     
 
 // Start
-_("#calendar").innerHTML = calendar();
+$("#calendar").innerHTML = calendar();
  
 // short queySelector
 function _(s) {

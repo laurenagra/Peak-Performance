@@ -9,6 +9,12 @@
 body {
 	font-family: 'Poppins', sans-serif;
 }
+
+#card-container{
+  display: flex;
+  align-content: flex-start;
+}
+
 .wrapper {
 	display: flex;
 	justify-content: center;
@@ -70,6 +76,10 @@ select {
 
 .image {
 	text-align: center;
+}
+
+#calendar {
+  flex: 0 0 75%;
 }
 
 /* .data {
