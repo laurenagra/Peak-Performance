@@ -72,14 +72,13 @@ select {
 	text-align: center;
 }
 
-.data {
+/* .data {
 	display:;
-=======
 *,
 *:after,
 *:before {
   box-sizing: border-box;
-}
+} */
 
 body {
   margin: 10px;

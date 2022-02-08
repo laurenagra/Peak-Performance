@@ -11,7 +11,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.data').on(('click' , function(){
         $('#name').toggle();
-    }):
+    }));
     $('#name').toggle();
     
 })
