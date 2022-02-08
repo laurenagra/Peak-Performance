@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
-    
-    <!--Attach css, font apis, moment??-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--Attach css, font apis, moment??-->
+    <title>Document</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Peak Performace</title>
-  </head>
+</head>
+<body>
   <header>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -19,6 +20,87 @@
 </header>
   <body>
     <main>
+
+        <aside id="card-container">
+            <input id="service-menu">
+            <!--Table for services: Brian-->
+            <div id="client-list" class= "wrapper"><!--Jamille here-->
+                <div class="menu"> 
+                    <select id = "name" class="form-control target select client-select-list">
+                        <option value="sue">Sue Clark</option>
+                        <option value ="ben">Ben Jones</option>
+                        <option Value ="garry">Garry Miles</option>
+                        <option value ="kim">Kim Carter</option>
+                      </select>
+                    </div>
+            
+                    <div class="content">
+                    <div id="sue" class="data">
+                        <p class="image"><img src="./assets/images/sue.jpg" alt= "">
+                        </p>
+                        <p><b>Full Name</b><span> Sue Clark</span></p>
+                        <p><b>Email</b><span> SueClark@gmail.com</span></p>
+                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+                        <p><b>Twitter</b><span> @sueclark</span></p>
+                        <p><b>Address</b><span> 235 East Ave</span></p>
+                        <p><b>Website</b><span> www.sueclark.com</span></p>
+                    </div>
+                    <div id="ben" class="data">
+                        <p class="image"><img src="./assets/images/ben.jpg" alt= "">
+                        <p><b>Full Name</b><span> ben Clark</span></p>
+                        <p><b>Email</b><span> benClark@gmail.com</span></p>
+                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+                        <p><b>Twitter</b><span> @benclark</span></p>
+                        <p><b>Address</b><span> 235 East Ave</span></p>
+                        <p><b>Website</b><span> www.benclark.com</span></p>
+                    </div>
+                    <div id="garry" class="data">
+                        <p class="image"><img src="./assets/images/garry.jpg" alt= "">
+                        <p><b>Full Name</b><span> garry Clark</span></p>
+                        <p><b>Email</b><span> garryClark@gmail.com</span></p>
+                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+                        <p><b>Twitter</b><span> @garryclark</span></p>
+                        <p><b>Address</b><span> 235 East Ave</span></p>
+                        <p><b>Website</b><span> www.garryclark.com</span></p>
+                    </div>
+                    <div id="kim" class="data">
+                        <p class="image"><img src="./assets/images/kim.jpg" alt= "">
+                        <p><b>Full Name</b><span> kim Clark</span></p>
+                        <p><b>Email</b><span> kimClark@gmail.com</span></p>
+                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+                        <p><b>Twitter</b><span> @kimclark</span></p>
+                        <p><b>Address</b><span> 235 East Ave</span></p>
+                        <p><b>Website</b><span> www.kimclark.com</span></p>
+                    </div>
+                </div>
+                
+            </div>
+            
+
+                  <button id="service-list" 
+            class = "btn btn-primary btn-sm"
+            type="submit">
+        </button>
+            <!--On click of client name: open calendar-->
+    <!--Create aside with two containers/boxes inside-->
+    <!--One existing clients, the other new clients, both open dropdown schedule select-->
+    <!--Jamille: Drop down selector-->
+            <div id="new-client"><!--Derrick--><button id="save-client"></button>
+              <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    
+    </aside>
+    <section> <a href="#" id="schedule">Schedule</a><!--Lauren: Calendar Submit button--><button id="save-event"></button></section>
+    <!--in main create container for calendar-->
+    <!--on click of date, can schedule or edit appointments for the day in dropdown schedule select-->
+</main>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./assets/js/script.js"></script>
+</body>
+<!--Wishlist! Footer, navbar with paypage info and plans-->
+<!--Javascript and jquery-->
+</html>
+
       <aside id="card-container">
         <input id="service-menu" />
         <!--Table for services: Brian-->
@@ -59,3 +141,4 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </html>
+
