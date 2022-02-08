@@ -11,14 +11,14 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.data').on(('click' , function(){
         $('#name').toggle();
-    }):
+    }));
     $('#name').toggle();
     
 })
     
 
 // Start
-_("#calendar").innerHTML = calendar();
+$("#calendar").innerHTML = calendar();
  
 // short queySelector
 function _(s) {

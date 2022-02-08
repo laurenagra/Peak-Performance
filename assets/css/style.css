@@ -9,6 +9,12 @@
 body {
 	font-family: 'Poppins', sans-serif;
 }
+
+#card-container{
+  display: flex;
+  align-content: flex-start;
+}
+
 .wrapper {
 	display: flex;
 	justify-content: center;
@@ -72,14 +78,17 @@ select {
 	text-align: center;
 }
 
-.data {
+#calendar {
+  flex: 0 0 75%;
+}
+
+/* .data {
 	display:;
-=======
 *,
 *:after,
 *:before {
   box-sizing: border-box;
-}
+} */
 
 body {
   margin: 10px;
