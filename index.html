@@ -45,61 +45,54 @@
             <p><b>Full Name</b><span> Sue Clark</span></p>
             <p><b>Email</b><span> SueClark@gmail.com</span></p>
             <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-            <p><b>Twitter</b><span> @sueclark</span></p>
             <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>Website</b><span> www.sueclark.com</span></p>
+            <button>New Session</button>
           </div>
           <div id="ben" class="data">
             <p class="image"><img src="./assets/images/ben.jpg" alt=""></p>
             <p><b>Full Name</b><span> ben Clark</span></p>
             <p><b>Email</b><span> benClark@gmail.com</span></p>
             <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-            <p><b>Twitter</b><span> @benclark</span></p>
             <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>Website</b><span> www.benclark.com</span></p>
+            <button>New Session</button>
           </div>
           <div id="garry" class="data">
             <p class="image"><img src="./assets/images/garry.jpg" alt=""></p>
             <p><b>Full Name</b><span> garry Clark</span></p>
             <p><b>Email</b><span> garryClark@gmail.com</span></p>
             <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-            <p><b>Twitter</b><span> @garryclark</span></p>
             <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>Website</b><span> www.garryclark.com</span></p>
+            <button>New Session</button>
           </div>
           <div id="kim" class="data">
             <p class="image"><img src="./assets/images/kim.jpg" alt=""></p>
             <p><b>Full Name</b><span> kim Clark</span></p>
             <p><b>Email</b><span> kimClark@gmail.com</span></p>
             <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-            <p><b>Twitter</b><span> @kimclark</span></p>
             <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>Website</b><span> www.kimclark.com</span></p>
+            <button>New Session</button>
           </div>
         </div>
 
       </div>
-
-
-      <button id="service-list" class="btn btn-primary btn-sm" type="submit">
-      </button>
-      <!--On click of client name: open calendar-->
-      <!--Create aside with two containers/boxes inside-->
-      <!--One existing clients, the other new clients, both open dropdown schedule select-->
-      <!--Jamille: Drop down selector-->
-      <div id="new-client">
-        <!--Derrick--><button id="save-client"></button>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="true">
-          </button>
+      <!--turn into dropdown-->
+      <!--insert image of someone working out that will be covered by the dropdown when it is in use-->
+      <div class="login-page">
+        <div class="form">
+          <form class="register-form">
+            <input type="text" placeholder="full name" />
+            <input type="text" placeholder="phone" />
+            <input type="text" placeholder="email id" />
+            <input type="text" placeholder="phone number" />
+            <input type="text" placeholder="address" />
+            <button>Create</button>
+          </form>
         </div>
       </div>
-
+      <!--On click of client name: open calendar-->
+      <!--One existing clients, the other new clients, both open dropdown schedule select-->
     </aside>
 
-    <!--in main create container for calendar-->
-    <!--on click of date, can schedule or edit appointments for the day in dropdown schedule select-->
     <div id="calendar"></div>
 
     <div id='formDiv'>
@@ -107,6 +100,7 @@
         <legend>
           <h2> Add An Event </h2>
         </legend>
+        <!--BRIAN!!! WORK HERE BUBS-->
         <form name='myForm' onsubmit="myFunc()">
           <table>
             <tr>
@@ -117,10 +111,10 @@
               <td>Type:</td>
               <td style="display: flex;">
                 <select class="selectMenu" id="eventType" name="eventType" onchange="displayCol()" required>
-                <option value="">Select One</option>
-                <option value="Event">Event</option>
-                <option value="Leisure">Leisure</option>
-                <option value="Family Time">Family Time</option>
+                  <option value="">Select One</option>
+                  <option value="Event">Event</option>
+                  <option value="Leisure">Leisure</option>
+                  <option value="Family Time">Family Time</option>
                 </select>
                 <div id="eventColor"></div>
               </td>
@@ -128,6 +122,9 @@
             <tr>
               <td>Date:</td>
               <td><input type="date" name="eventDate" id="eventDate" required></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
             </tr>
             <tr>
               <td><input type="submit" id="addEventBTN" value="Add Event"></td>
@@ -142,7 +139,6 @@
   </main>
 </body>
 <!--Wishlist! Footer, navbar with paypage info and plans-->
-<!--Javascript and jquery-->
 <!-- TAKEN REFERENCE FROM https://codepen.io/peanav/pen/ulkof -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
