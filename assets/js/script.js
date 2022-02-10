@@ -30,6 +30,8 @@ function closeForm() {
   x.style.display = "none";
   y.style.transform = "rotate(90deg)";
 
+}
+
 // Start
 $("#calendar").innerHTML = calendar();
  
@@ -38,6 +40,7 @@ function _(s) {
   return document.querySelector(s);
 
 }
+
 
 function toggleForm() {
   var x = document.getElementById("formDiv");
