@@ -2,15 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--Attach css, font apis, moment??-->
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Attach css, font apis, moment??-->
+  <title>Peak Performance</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
-  <header>
+
+<header>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Peak Performance Training Calendar</h1>
@@ -18,127 +20,134 @@
     </div>
   </div>
 </header>
-  <body>
-    <main>
 
-        <aside id="card-container">
-            <input id="service-menu">
-            <!--Table for services: Brian-->
-            <div id="client-list" class= "wrapper"><!--Jamille here-->
-                <div class="menu"> 
-                    <select id = "name" class="form-control target select client-select-list">
-                        <option value="sue">Sue Clark</option>
-                        <option value ="ben">Ben Jones</option>
-                        <option Value ="garry">Garry Miles</option>
-                        <option value ="kim">Kim Carter</option>
-                      </select>
-                    </div>
-            
-                    <div class="content">
-                    <div id="sue" class="data">
-                        <p class="image"><img src="./assets/images/sue.jpg" alt= "">
-                        </p>
-                        <p><b>Full Name</b><span> Sue Clark</span></p>
-                        <p><b>Email</b><span> SueClark@gmail.com</span></p>
-                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-                        <p><b>Twitter</b><span> @sueclark</span></p>
-                        <p><b>Address</b><span> 235 East Ave</span></p>
-                        <p><b>Website</b><span> www.sueclark.com</span></p>
-                    </div>
-                    <div id="ben" class="data">
-                        <p class="image"><img src="./assets/images/ben.jpg" alt= "">
-                        <p><b>Full Name</b><span> ben Clark</span></p>
-                        <p><b>Email</b><span> benClark@gmail.com</span></p>
-                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-                        <p><b>Twitter</b><span> @benclark</span></p>
-                        <p><b>Address</b><span> 235 East Ave</span></p>
-                        <p><b>Website</b><span> www.benclark.com</span></p>
-                    </div>
-                    <div id="garry" class="data">
-                        <p class="image"><img src="./assets/images/garry.jpg" alt= "">
-                        <p><b>Full Name</b><span> garry Clark</span></p>
-                        <p><b>Email</b><span> garryClark@gmail.com</span></p>
-                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-                        <p><b>Twitter</b><span> @garryclark</span></p>
-                        <p><b>Address</b><span> 235 East Ave</span></p>
-                        <p><b>Website</b><span> www.garryclark.com</span></p>
-                    </div>
-                    <div id="kim" class="data">
-                        <p class="image"><img src="./assets/images/kim.jpg" alt= "">
-                        <p><b>Full Name</b><span> kim Clark</span></p>
-                        <p><b>Email</b><span> kimClark@gmail.com</span></p>
-                        <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
-                        <p><b>Twitter</b><span> @kimclark</span></p>
-                        <p><b>Address</b><span> 235 East Ave</span></p>
-                        <p><b>Website</b><span> www.kimclark.com</span></p>
-                    </div>
-                </div>
-                
-            </div>
-            
+<body>
+  <input id="service-menu">
+  <!--Table for services: Brian-->
 
-                  <button id="service-list" 
-            class = "btn btn-primary btn-sm"
-            type="submit">
-        </button>
-            <!--On click of client name: open calendar-->
-    <!--Create aside with two containers/boxes inside-->
-    <!--One existing clients, the other new clients, both open dropdown schedule select-->
-    <!--Jamille: Drop down selector-->
-            <div id="new-client"><!--Derrick--><button id="save-client"></button>
-              <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    
+  <main class="d-flex d-flex align-items-stretch">
+    <aside id="card-container" class="flex-column">
+
+      <div id="client-list" class="wrapper">
+        <!--Jamille here-->
+        <div class="menu">
+          <select id="name" class="form-control target select client-select-list">
+            <option value="sue">Sue Clark</option>
+            <option value="ben">Ben Jones</option>
+            <option Value="garry">Garry Miles</option>
+            <option value="kim">Kim Carter</option>
+          </select>
+        </div>
+
+        <div class="content">
+          <div id="sue" class="data">
+            <p class="image"><img src="./assets/images/sue.jpg" alt="">
+            </p>
+            <p><b>Full Name</b><span> Sue Clark</span></p>
+            <p><b>Email</b><span> SueClark@gmail.com</span></p>
+            <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+            <p><b>Twitter</b><span> @sueclark</span></p>
+            <p><b>Address</b><span> 235 East Ave</span></p>
+            <p><b>Website</b><span> www.sueclark.com</span></p>
+          </div>
+          <div id="ben" class="data">
+            <p class="image"><img src="./assets/images/ben.jpg" alt=""></p>
+            <p><b>Full Name</b><span> ben Clark</span></p>
+            <p><b>Email</b><span> benClark@gmail.com</span></p>
+            <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+            <p><b>Twitter</b><span> @benclark</span></p>
+            <p><b>Address</b><span> 235 East Ave</span></p>
+            <p><b>Website</b><span> www.benclark.com</span></p>
+          </div>
+          <div id="garry" class="data">
+            <p class="image"><img src="./assets/images/garry.jpg" alt=""></p>
+            <p><b>Full Name</b><span> garry Clark</span></p>
+            <p><b>Email</b><span> garryClark@gmail.com</span></p>
+            <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+            <p><b>Twitter</b><span> @garryclark</span></p>
+            <p><b>Address</b><span> 235 East Ave</span></p>
+            <p><b>Website</b><span> www.garryclark.com</span></p>
+          </div>
+          <div id="kim" class="data">
+            <p class="image"><img src="./assets/images/kim.jpg" alt=""></p>
+            <p><b>Full Name</b><span> kim Clark</span></p>
+            <p><b>Email</b><span> kimClark@gmail.com</span></p>
+            <p><b>Phone</b><span> (+00) 9299 3433 10</span></p>
+            <p><b>Twitter</b><span> @kimclark</span></p>
+            <p><b>Address</b><span> 235 East Ave</span></p>
+            <p><b>Website</b><span> www.kimclark.com</span></p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <button id="service-list" class="btn btn-primary btn-sm" type="submit">
+      </button>
+      <!--On click of client name: open calendar-->
+      <!--Create aside with two containers/boxes inside-->
+      <!--One existing clients, the other new clients, both open dropdown schedule select-->
+      <!--Jamille: Drop down selector-->
+      <div id="new-client">
+        <!--Derrick--><button id="save-client"></button>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+          </button>
+        </div>
+      </div>
+
     </aside>
-    <section> <a href="#" id="schedule">Schedule</a><!--Lauren: Calendar Submit button--><button id="save-event"></button></section>
+
     <!--in main create container for calendar-->
     <!--on click of date, can schedule or edit appointments for the day in dropdown schedule select-->
-</main>
-<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./assets/js/script.js"></script>
+    <div id="calendar"></div>
+
+    <div id='formDiv'>
+      <fieldset style='padding:0 20px 20px 20px'>
+        <legend>
+          <h2> Add An Event </h2>
+        </legend>
+        <form name='myForm' onsubmit="myFunc()">
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td><input type="text" name="eventName" id="eventName" required></td>
+            </tr>
+            <tr>
+              <td>Type:</td>
+              <td style="display: flex;">
+                <select class="selectMenu" id="eventType" name="eventType" onchange="displayCol()" required>
+                <option value="">Select One</option>
+                <option value="Event">Event</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Family Time">Family Time</option>
+                </select>
+                <div id="eventColor"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td><input type="date" name="eventDate" id="eventDate" required></td>
+            </tr>
+            <tr>
+              <td><input type="submit" id="addEventBTN" value="Add Event"></td>
+              <td><button id="closeBTN" onclick="closeForm()" form="noForm">Close Window</button></td>
+            </tr>
+          </table>
+        </form>
+      </fieldset>
+    </div>
+    <!--in main create container for calendar-->
+    <!--on click of date, can schedule or edit appointments for the day in dropdown schedule select-->
+  </main>
 </body>
 <!--Wishlist! Footer, navbar with paypage info and plans-->
 <!--Javascript and jquery-->
-</html>
+<!-- TAKEN REFERENCE FROM https://codepen.io/peanav/pen/ulkof -->
 
-      <aside id="card-container">
-        <input id="service-menu" />
-        <!--Table for services: Brian-->
-        <button id="service-list"></button>
-        <div id="client-list">
-          <!--Jamille here-->
-          <!--On click of client name: open calendar-->
-        </div>
-        <!--Create aside with two containers/boxes inside-->
-        <!--One existing clients, the other new clients, both open dropdown schedule select-->
-        <!--Jamille: Drop down selector-->
-        <div id="new-client">
-          <!--Derrick--><button id="save-client"></button>
-        </div>
-      </aside>
-      <section id="calendar">
-        
-    <div id="menu">
-        <span id="menu-navi">
-          <button type="button" class="btn btn-default btn-sm move-today" data-action="move-today">Today</button>
-          <button type="button" class="btn btn-default btn-sm move-day" data-action="move-prev">
-            <i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
-          </button>
-          <button type="button" class="btn btn-default btn-sm move-day" data-action="move-next">
-            <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
-          </button>
-        </span>
-        <span id="renderRange" class="render-range"></span>
-      </div>
-        <!--Lauren: Calendar Submit button--><button id="save-event"></button>
-      </section>
-      <!--in main create container for calendar-->
-      <!--on click of date, can schedule or edit appointments for the day in dropdown schedule select-->
-    </main>
-  </body>
-  <!--Wishlist! Footer, navbar with paypage info and plans-->
-  <!--Javascript and jquery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./assets/js/script.js"></script>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./assets/js/script.js"></script>
 
+</html>
