@@ -8,10 +8,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+
   $('.data').on(('click', function(){
+
+    $('.data').on(('click' , function(){
+        $('#name').toggle();
+    }));
+
     $('#name').toggle();
   }))
 });
+
 
 
 //Calendar Code
@@ -22,6 +29,14 @@ function closeForm() {
   var y = document.getElementsByClassName("addBTN")[0];
   x.style.display = "none";
   y.style.transform = "rotate(90deg)";
+
+// Start
+$("#calendar").innerHTML = calendar();
+ 
+// short queySelector
+function _(s) {
+  return document.querySelector(s);
+
 }
 
 function toggleForm() {
