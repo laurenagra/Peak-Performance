@@ -379,6 +379,7 @@ function myFunc() {
 			var div = createElement('div', 'event');
 			var group1 = createElement('div', 'eventgrp');
 			var group2 = createElement('div', 'eventgrp');
+			var group3 = createElement('div', 'eventTime');
 			var square = createElement('div', 'event-category ' + ev.color);
 			var span = createElement('span', '', ev.eventName);
 			var del = createElement('button', 'delBTN', 'x');
@@ -526,6 +527,7 @@ function myFunc() {
 	var eventType = document.myForm.eventType.value;
 	var eventColor = '';
 	var eventDate = document.myForm.eventDate.value;
+	var eventTime = document.myForm.eventTime.value;
 
 	switch (eventType) {
 		case 'Event':
@@ -544,12 +546,13 @@ function myFunc() {
 
 	if (data == null) data = [];
 
-	if (eventName != '' && eventType != '' && eventColor != '' && eventDate != '')
+	if (eventName != '' && eventType != '' && eventColor != '' && eventDate != '' && eventTime != '')
 		data.push({
 			eventName: eventName,
 			calendar: eventType,
 			color: eventColor,
 			date: eventDate,
+			time: eventTime,
 		});
 	for (var a of data) {
 		console.log(a);
@@ -597,6 +600,7 @@ function myFunc() {
 	document.myForm.eventName.value = '';
 	document.myForm.eventType.value = '';
 	document.myForm.eventDate.value = '';
+	document.myForm.eventTime.value = '';
 
 	toggleForm();
 }
