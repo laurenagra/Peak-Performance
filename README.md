@@ -21,7 +21,7 @@
 A unique and efficient app designed to make your scheduling as a trainer simpler and easier. 
 
 ## Website 
-![Check out our app here!](https://laurenagra.github.io/Peak-Performance/)
+[Check out our app here!](https://laurenagra.github.io/Peak-Performance/)
 
 ## Screenshots
 
