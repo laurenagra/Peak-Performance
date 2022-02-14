@@ -1,69 +1,132 @@
-//Show  name details from selection list
+//When you select the fullName from the selection list - the form details of selected person is populated.
 $(document).ready(function () {
-	$('#name')
+	$('#fullName')
 		.on('change', function () {
-			$('.data').hide();
+			// $('.data').remove();
+			var users = JSON.parse(localStorage.getItem('formData')) || [];
+			var userName = $('#fullName').val();
+			//console.log('name select change +++', userName);
+			if (users.length && userName != 'fullName') {
+				var outputData = users.filter(function (item) {
+					return item.fullName == userName;
+				});
+				//console.log('filtered +++', outputData);
+				var output = document.querySelector('#output');
+				output.innerHTML = '';
+				outputData.forEach((data) => {
+					output.innerHTML = `
+						<form  class= "data">
+							<img src='./assets/images/${data.photo}' />
+							<p ><b>Full Name</b><span>${data.fullName} </span></p>
+							<p ><b>Email</b><span> ${data.email}</span></p>
+							<p ><b>Phone</b><span> ${data.phone}</span></p>
+							<p><b>Address</b><span>${data.address} </span></p>
+							<p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+							<button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+						</form>`;
+				});
+			}
+
 			$('#' + $(this).val()).fadeIn(700);
 		})
 		.change();
 });
 
-//Add New Client Form
+//When the button is clicked the new client input form is opened.
 $(document).ready(function () {
 	$('#newClientBtn').click(function () {
 		$('#newClientInput').toggle(500);
 	});
 
-//New Session button with link to add event form
+	//A new session button is accessible within the existing client form that open the add new event form on the calendar.
 	$('#newSessionBtn').click(function () {
-		console.log('new session button +++');
+		//console.log('new session button +++');
 		$('#formDiv').show();
 	});
 });
 
-//Upload Image
-const fileSelect = document.getElementById('fileSelect'),
-	fileElem = document.getElementById('fileElem'),
-	fileList = document.getElementById('fileList');
+//New client data is submitted to local storage and output is populated to the existing client form.
 
-fileSelect.addEventListener(
-	'click',
-	function (e) {
-		if (fileElem) {
-			fileElem.click();
-		}
-		e.preventDefault(); // prevent navigation to "#"
-	},
-	false
-);
-
-fileElem.addEventListener('change', handleFiles, false);
-
-function handleFiles() {
-	if (!this.files.length) {
-		fileList.innerHTML = '<p>No files selected!</p>';
+const signUp = (e) => {
+	let formData = JSON.parse(localStorage.getItem('formData')) || [];
+	let exist =
+		formData.length &&
+		JSON.parse(localStorage.getItem('formData')).some(
+			(data) =>
+				data.fullName.toUpperCase() ==
+				document.getElementById('inputFullName').value.toUpperCase()
+		);
+	if (!exist) {
+		formData.push({
+			photo: document.getElementById('fileUpload').files[0].name,
+			fullName: document.getElementById('inputFullName').value.trim(),
+			email: document.getElementById('inputEmail').value.trim(),
+			phone: document.getElementById('inputPhone').value.trim(),
+			address: document.getElementById('inputAddress').value.trim(),
+			zip: document.getElementById('inputZip').value.trim(),
+			city: document.getElementById('inputCity').value.trim(),
+			state: document.getElementById('inputState').value.trim(),
+		});
+		localStorage.setItem('formData', JSON.stringify(formData));
+		//console.log(localStorage.getItem('formData'));
+		displayData();
+		document.getElementById('form').reset();
+		document.getElementById('fullName').focus();
 	} else {
-		fileList.innerHTML = '';
-		const list = document.createElement('ul');
-		fileList.appendChild(list);
-		for (let i = 0; i < this.files.length; i++) {
-			const li = document.createElement('li');
-			list.appendChild(li);
-
-			const img = document.createElement('img');
-			img.src = URL.createObjectURL(this.files[i]);
-			img.height = 60;
-			img.onload = function () {
-				URL.revokeObjectURL(this.src);
-			};
-			li.appendChild(img);
-			const info = document.createElement('span');
-			info.innerHTML =
-				this.files[i].name + ': ' + this.files[i].size + ' bytes';
-			li.appendChild(info);
-		}
+		alert('This is a duplicate name');
 	}
+	e.preventDefault();
+};
+function displayData() {
+	//console.log(localStorage.getItem('formData'));
+	if (localStorage.getItem('formData')) {
+		var output = document.querySelector('#output');
+		output.innerHTML = '';
+		JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+			output.innerHTML = `
+				<form  class= "data">
+					<img src='./assets/images/${data.photo}' />
+					<p ><b>Full Name</b><span>${data.fullName} </span></p>
+					<p ><b>Email</b><span> ${data.email}</span></p>
+					<p pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><b>Phone</b><span> ${data.phone}</span></p>
+					<p><b>Address</b><span>${data.address} </span></p>
+					<p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+					<button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+				</form>`;
+		});
+		//New client fullNames are added to option selection list
+		var selectEl = document.querySelector('#fullName');
+		JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+			var newOption = document.createElement('option');
+			newOption.value = data.fullName;
+			newOption.text = data.fullName;
+
+			selectEl.add(newOption, null);
+		});
+	}
+	//A image upload for new client is displayed on the screen
+	$(function () {
+		$('#fileUpload').change(function (event) {
+			var x = URL.createObjectURL(event.target.files[0]);
+			$('#uploadImage').attr('src', x);
+			console.log(event);
+		});
+	});
 }
+displayData();
+
+// var inputImage = document.getElementById('inputImage');
+// var uploadedImage = '';
+// inputImage.addEventListener('change', function () {
+// 	var reader = new FileReader();
+// 	reader.addEventListener('load', () => {
+// 		uploadedImage = reader.result;
+// 		document.querySelector(
+// 			'#displayImage'
+// 		).style.backgroundImage = `url(${uploadedImage})`;
+// 	});
+// 	reader.readAsDataURL(this.files[0]);
+// });
 
 //Calendar Code
 window.document.onload = myFunc();

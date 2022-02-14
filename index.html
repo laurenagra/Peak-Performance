@@ -28,67 +28,35 @@
     <aside id="card-container" class="flex-column">
 
       <div id="client-list" class="wrapper">
-        <!--Jamille here-->
-        <div class="menu">
-          <select id="name" class="form-control target select client-select-list">
-            <option value="sue">Sue Clark</option>
-            <option value="ben">Ben Jones</option>
-            <option Value="garry">Garry Miles</option>
-            <option value="kim">Kim Carter</option>
+        
+        <div class="menu ">
+          <select id="fullName" name="fullName" class="form-control target select client-select-list" >
+            <option  value="fullName">Select Client Name</option>
+           
           </select>
         </div>
 
-        <div class="content">
-          <form id="sue" class="data">
-            <p class="image"><img src="./assets/images/sue.jpg" alt=""></p>
-            <p><b>Full Name</b><span> Sue Clark</span></p>
-            <p><b>Email</b><span> SueClark@gmail.com</span></p>
-            <p><b>Phone</b><span> 999-455-8790</span></p>
-            <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>City, State, Zip</b><span>New York, NY 10001</span></p>
-            <button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+        <div class="content" id="output">
+          <form class= "data">
+            
+            <!--Display Output for Existing Client Form--> 
+             
           </form>
-          <form id="ben" class="data">
-            <p class="image"><img src="./assets/images/ben.jpg" alt=""></p>
-            <p><b>Full Name</b><span> Ben Clark</span></p>
-            <p><b>Email</b><span> benClark@gmail.com</span></p>
-            <p><b>Phone</b><span> 999-455-8790</span></p>
-            <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>City, State, Zip</b><span>New York, NY 10001</span></p>
-            <button type="button" class="btn btn-outline-primary">New Session</button>
-          </form>
-          <form id="garry" class="data">
-            <p class="image"><img src="./assets/images/garry.jpg" alt=""></p>
-            <p><b>Full Name</b><span> Garry Clark</span></p>
-            <p><b>Email</b><span> garryClark@gmail.com</span></p>
-            <p><b>Phone</b><span> 999-455-8790</span></p>
-            <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>City, State, Zip</b><span>New York, NY 10001</span></p>
-            <button type="button" class="btn btn-outline-primary">New Session</button>
-          </form>
-          <form id="kim" class="data">
-            <p class="image"><img src="./assets/images/kim.jpg" alt=""></p>
-            <p><b>Full Name</b><span> Kim Clark</span></p>
-            <p><b>Email</b><span> kimClark@gmail.com</span></p>
-            <p><b>Phone</b><span> 999-455-8790</span></p>
-            <p><b>Address</b><span> 235 East Ave</span></p>
-            <p><b>City, State, Zip</b><span>New York, NY 10001</span></p>
-            <button type="button" class="btn btn-outline-primary">new Session</button>
-          </form>
+         
+          
         </div>
-        <!--turn into dropdown-->
-        <!--insert image of someone working out that will be covered by the dropdown when it is in use-->
+        <!--New Client Input Form-->
         <div class="login-page">
         </div>
         <button id="newClientBtn" class="btn btn-outline-primary">Add New Client</button>
-        <form id="newClientInput" action="" method="post" class="form-control">
-          <p class="image"><input type="file" id="fileElem" multiple accept="image/*" style="display:none">
-            <a href="#" id="fileSelect">Select image</a>
-          <div id="fileList">
-            <p><input class="form-control" name="fullName" placeholder="Full Name"> </p>
-            <p><input class="form-control" placeholder="Email"> </p>
-            <p><input id="phone" type="tel" pattern="[9-9-9]--[5-6]--[5-5-5-5]" class="form-control"
-                placeholder="Phone"> </p>
+        <form role="form" onsubmit="signUp(event);" id="newClientInput"  method="post" class="form-control">
+            <input type="file" id="fileUpload" accept="image/png, image/jpg">
+            <img  src="./assets/images/profile.png"  id="uploadImage" class ="image"></img>
+        <div >
+            <p><input id="inputFullName" class="form-control" name="fullName" placeholder="Full Name" required> </p>
+            <p><input id ="inputEmail" class="form-control" placeholder="Email Address"> </p>
+            <p><input id="inputPhone" type="tel"  class="form-control" 
+              placeholder="888 888 8888" required> </p>
             <p><input type="text" class="form-control" id="inputAddress" placeholder="Address"></p>
             <input placeholder="Zip Code" type="text" class="form-control" id="inputZip">
             <p><input placeholder="City" type="text" class="form-control" id="inputCity"></p>
@@ -163,12 +131,11 @@
 
               </select>
             <div></div>
-            <input type="button" onclick="handleSubmit()" class="btn btn-outline-primary" value="Submit" />
+            <button id="newClientBtn"type="submit"  class="btn btn-outline-primary">Submit</button> 
         </form>
       </div>
       </div>
-      <!--On click of client name: open calendar-->
-      <!--One existing clients, the other new clients, both open dropdown schedule select-->
+      
     </aside>
 
     <div id="calendar"></div>
