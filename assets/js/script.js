@@ -99,16 +99,22 @@ function displayCol() {
 	var eventType = document.myForm.eventType.value;
 	var eventColor = '';
 	switch (eventType) {
-		case 'Event':
+		case 'Yoga':
 			eventColor = 'rgba(156, 202, 235, 1)';
 			break;
-		case 'Leisure':
+		  case 'Cardio':
 			eventColor = 'rgba(247, 167, 0, 1)';
 			break;
-		case 'Family Time':
+		  case 'Lower Body':
 			eventColor = 'rgba(249, 233, 0, 1)';
 			break;
-		default:
+		  case 'Upper Body':
+			eventColor = 'rgb(128,0,128)';
+			break;
+		  case 'Full Body':
+			eventColor = 'rgb(0,255,255)';
+			break;
+		  default:
 			eventColor = 'rgba(153, 198, 109, 1)';
 	}
 	$('#eventColor').css('background', eventColor);
@@ -530,16 +536,22 @@ function myFunc() {
 	var eventTime = document.myForm.eventTime.value;
 
 	switch (eventType) {
-		case 'Event':
+		case 'Yoga':
 			eventColor = 'blue';
 			break;
-		case 'Leisure':
+		  case 'Cardio':
 			eventColor = 'orange';
 			break;
-		case 'Family Time':
+		  case 'Lower Body':
 			eventColor = 'yellow';
 			break;
-		default:
+		  case 'Upper Body':
+			eventColor = 'purple';
+			break;
+		  case 'Full Body':
+			eventColor = 'cyan';
+			break;
+		  default:
 			eventColor = 'green';
 	}
 	var data = JSON.parse(localStorage.getItem('data'));

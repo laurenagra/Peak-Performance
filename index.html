@@ -183,16 +183,22 @@
           <table>
             <tr>
               <td>Name:</td>
-              <td><input type="text" name="eventName" id="eventName" required></td>
+              <td><input type="text" name="eventName" id="eventName" required placeholder= "Please type name..."></td>
             </tr>
             <tr>
-              <td>Type:</td>
+              <td>Service:</td>
               <td style="display: flex;">
                 <select class="selectMenu" id="eventType" name="eventType" onchange="displayCol()" required>
-                  <option value="">Select One</option>
-                  <option value="Event">Event</option>
-                  <option value="Leisure">Leisure</option>
-                  <option value="Family Time">Family Time</option>
+                  <option value=“”>Select One</option>
+                  <option value=“Yoga”>Yoga 30-minutes $25</option>
+                  <option value=“Yoga”>Yoga 50-minutes $45</option>
+                  <option value=“Cardio”>Cardio 25-minutes $30</option>
+                  <option value=“Cardio”>Cardio 50-minutes $55</option>
+                  <option value=“Lower Body”>Lower Body 25-minutes $30</option>
+                  <option value=“Lower Body”>Lower Body 50-minutes $60</option>
+                  <option value=“Upper Body”>Upper Body 25-minutes $30</option>
+                  <option value=“Upper Body”>Upper Body 50-minutes $60</option>
+                  <option value=“Full Body”>Full Body 60-minutes $70</option>
                 </select>
                 <div id="eventColor"></div>
               </td>
