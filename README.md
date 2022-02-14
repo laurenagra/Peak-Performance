@@ -6,6 +6,7 @@
 - [Website](#website)
 - [Screenshots](#screenshots)
 - [Code Used](#code-used)
+- [Api Used](#api-used)
 - [Status](#status)
 - [Inspired By](#inspired-by)
 - [Acceptance Criteria](#acceptance-criteria)
@@ -31,6 +32,11 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 - CSS
 - Javascript
 
+## API Used 
+- [Image API](https://developers.giphy.com/docs/api#quick-start-guide)
+- [Holidays](https://calendarific.com/api-documentation)
+
+
 ## Status
 - This project is incomplete as of February 12
 
@@ -41,3 +47,8 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 ## Acceptance Criteria
 
 
+## Collaborators 
+- Lauren Agra
+- Jamille Rooks
+- Brian Garcia
+- Derrick Hinton
