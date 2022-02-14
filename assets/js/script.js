@@ -1,15 +1,48 @@
-// //Show  name details from selection list
-// $(document).ready(function () {
-// 	$('#name')
-// 		.on('change', function () {
-// 			$('.data').hide();
-// 			$('#' + $(this).val()).fadeIn(700);
-// 		})
-// 		.change();
-// });
-
-//Add New Client Form
+//When you select the fullName from the selection list - the form details of selected person is populated.
 $(document).ready(function () {
+	$('#fullName')
+		.on('change', function () {
+			// $('.data').remove();
+			var users = JSON.parse(localStorage.getItem('formData')) || [];
+			var userName = $('#fullName').val();
+			//console.log('name select change +++', userName);
+			if (users.length && userName != 'fullName') {
+				var outputData = users.filter(function (item) {
+					return item.fullName == userName;
+				});
+				//console.log('filtered +++', outputData);
+				$('.data').remove();
+				var output = document.querySelector('#output');
+				output.innerHTML = '';
+				outputData.forEach((data) => {
+					output.innerHTML = `
+						<form  class= "data">
+							<img src='./assets/images/${data.photo}' />
+							<p ><b>Full Name</b><span>${data.fullName} </span></p>
+							<p ><b>Email</b><span> ${data.email}</span></p>
+							<p ><b>Phone</b><span> ${data.phone}</span></p>
+							<p><b>Address</b><span>${data.address} </span></p>
+							<p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+							<button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+						</form>`;
+				});
+
+//A new session button is accessible within the existing client form that open the add new event form on the calendar.				
+				$('#newSessionBtn').click(function () {
+					//console.log('new session button +++');
+					$('#formDiv').show();
+				});
+			}
+
+			$('#' + $(this).val()).fadeIn(700);
+		})
+		.change();
+});
+
+
+//When the button is clicked the new client input form is opened.
+$(document).ready(function () {
+
   $("#name")
     .on("change", function () {
       $(".data").hide();
@@ -70,19 +103,6 @@ $(document).ready(function () {
       //fitnessList.setAttribute("src", "data.data[i].images.preview_gif.url");
       fitness.append(fitnessList);
     });
-  // fetch(
-  //   "https://api.giphy.com/v1/gifs/random/search?&api_key=iow5y3XECG4SVeN9vHRNANKzmFDXWWTY&q=fitness"
-  // ).then((response) => {
-  //   return response.json();
-  // });
-  // return Math.floor(Math.random() * 50).then((data) => {
-  //   console.log(data.data[i].images.downsized_medium.url);
-  //   // console.log(data.data[0].images.downsize_medium.url);
-  //   var fitness = document.getElementById("fitness");
-  //   var fitnessList = document.createElement("img");
-  //   fitnessList.setAttribute("src", data.data[i].images.downsized_medium.url);
-  //   fitness.appendChild(fitnessList);
-  // });
 });
 
 //Upload Image
@@ -127,7 +147,101 @@ function handleFiles() {
       li.appendChild(info);
     }
   }
+
+	$('#newClientBtn').click(function () {
+		$('#newClientInput').toggle(500);
+	});
+
+	//A new session button is accessible within the existing client form that open the add new event form on the calendar.
+	$('#newSessionBtn').click(function () {
+		console.log('new session button +++');
+		$('#formDiv').show();
+	});
+});
+
+//New client data is submitted to local storage and output is populated to the existing client form.
+
+const signUp = (e) => {
+	let formData = JSON.parse(localStorage.getItem('formData')) || [];
+	let exist =
+		formData.length &&
+		JSON.parse(localStorage.getItem('formData')).some(
+			(data) =>
+				data.fullName.toUpperCase() ==
+				document.getElementById('inputFullName').value.toUpperCase()
+		);
+	if (!exist) {
+		formData.push({
+			photo: document.getElementById('fileUpload').files[0].name,
+			fullName: document.getElementById('inputFullName').value.trim(),
+			email: document.getElementById('inputEmail').value.trim(),
+			phone: document.getElementById('inputPhone').value.trim(),
+			address: document.getElementById('inputAddress').value.trim(),
+			zip: document.getElementById('inputZip').value.trim(),
+			city: document.getElementById('inputCity').value.trim(),
+			state: document.getElementById('inputState').value.trim(),
+		});
+		localStorage.setItem('formData', JSON.stringify(formData));
+		//console.log(localStorage.getItem('formData'));
+		displayData();
+		document.getElementById('form').reset();
+		document.getElementById('fullName').focus();
+	} else {
+		alert('This is a duplicate name');
+	}
+	e.preventDefault();
+};
+function displayData() {
+	//console.log(localStorage.getItem('formData'));
+	if (localStorage.getItem('formData')) {
+		var output = document.querySelector('#output');
+		output.innerHTML = '';
+		JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+			output.innerHTML = `
+				<form  class= "data">
+					<img src='./assets/images/${data.photo}' />
+					<p ><b>Full Name</b><span>${data.fullName} </span></p>
+					<p ><b>Email</b><span> ${data.email}</span></p>
+					<p pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><b>Phone</b><span> ${data.phone}</span></p>
+					<p><b>Address</b><span>${data.address} </span></p>
+					<p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+					<button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+				</form>`;
+		});
+		//New client fullNames are added to option selection list
+		var selectEl = document.querySelector('#fullName');
+		JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+			var newOption = document.createElement('option');
+			newOption.value = data.fullName;
+			newOption.text = data.fullName;
+
+			selectEl.add(newOption, null);
+		});
+	}
+	//A image upload for new client is displayed on the screen
+	$(function () {
+		$('#fileUpload').change(function (event) {
+			var x = URL.createObjectURL(event.target.files[0]);
+			$('#uploadImage').attr('src', x);
+			console.log(event);
+		});
+	});
+
 }
+displayData();
+
+// var inputImage = document.getElementById('inputImage');
+// var uploadedImage = '';
+// inputImage.addEventListener('change', function () {
+// 	var reader = new FileReader();
+// 	reader.addEventListener('load', () => {
+// 		uploadedImage = reader.result;
+// 		document.querySelector(
+// 			'#displayImage'
+// 		).style.backgroundImage = `url(${uploadedImage})`;
+// 	});
+// 	reader.readAsDataURL(this.files[0]);
+// });
 
 //Calendar Code
 window.document.onload = myFunc();
