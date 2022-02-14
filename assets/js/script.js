@@ -11,6 +11,7 @@ $(document).ready(function () {
 					return item.fullName == userName;
 				});
 				//console.log('filtered +++', outputData);
+				$('.data').remove();
 				var output = document.querySelector('#output');
 				output.innerHTML = '';
 				outputData.forEach((data) => {
@@ -24,6 +25,12 @@ $(document).ready(function () {
 							<p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
 							<button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
 						</form>`;
+				});
+
+//A new session button is accessible within the existing client form that open the add new event form on the calendar.				
+				$('#newSessionBtn').click(function () {
+					//console.log('new session button +++');
+					$('#formDiv').show();
 				});
 			}
 
@@ -40,7 +47,7 @@ $(document).ready(function () {
 
 	//A new session button is accessible within the existing client form that open the add new event form on the calendar.
 	$('#newSessionBtn').click(function () {
-		//console.log('new session button +++');
+		console.log('new session button +++');
 		$('#formDiv').show();
 	});
 });
