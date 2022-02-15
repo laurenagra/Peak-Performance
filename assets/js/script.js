@@ -152,6 +152,7 @@ function displayData() {
       // console.log(data.data[0].images.downsize_medium.url);
       var fitness = document.getElementById("fitness");
       var fitnessList = document.createElement("div");
+	  fitnessList.className = "gif";
       fitnessList.innerHTML= `<img src= '${randomGif}' />`
       //fitnessList.setAttribute("src", "data.data[i].images.preview_gif.url");
       fitness.append(fitnessList);

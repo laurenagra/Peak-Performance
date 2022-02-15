@@ -34,15 +34,20 @@ body {
   margin: 10px;
   max-width: 200px;
   border: 5px solid rgba(141, 183, 193);
+  object-fit: contain;
+  max-width: fit-content;
+
 }
+
 
 #holidays {
   padding: 10px;
   margin: 5px;
   font-size: large;
-  border: 5px solid rgba(71, 80, 82);
-  border-radius: 25%;
+  border: 5px solid rgba(141, 183, 193);
   justify-content: right;
+  object-fit: contain; 
+  max-width: fit-content;
 }
 
 .menu,
