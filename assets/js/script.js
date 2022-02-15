@@ -1,98 +1,205 @@
-//Show  name details from selection list
+//When you select the fullName from the selection list - the form details of selected person is populated.
 $(document).ready(function () {
-	$('#name')
-		.on('change', function () {
-			$('.data').hide();
-			$('#' + $(this).val()).fadeIn(700);
-		})
-		.change();
+  $('#fullName')
+      .on('change', function () {
+          // $('.data').remove();
+          var users = JSON.parse(localStorage.getItem('formData')) || [];
+          var userName = $('#fullName').val();
+          //console.log('name select change +++', userName);
+          if (users.length && userName != 'fullName') {
+              var outputData = users.filter(function (item) {
+                  return item.fullName == userName;
+              });
+              //console.log('filtered +++', outputData);
+              $('.data').remove();
+              var output = document.querySelector('#output');
+              output.innerHTML = '';
+              outputData.forEach((data) => {
+                  output.innerHTML = `
+                      <form  class= "data">
+                          <img src='./assets/images/${data.photo}' />
+                          <p ><b>Full Name</b><span>${data.fullName} </span></p>
+                          <p ><b>Email</b><span> ${data.email}</span></p>
+                          <p ><b>Phone</b><span> ${data.phone}</span></p>
+                          <p><b>Address</b><span>${data.address} </span></p>
+                          <p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+                          <button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+                      </form>`;
+              });
+//A new session button is accessible within the existing client form that open the add new event form on the calendar.              
+              $('#newSessionBtn').click(function () {
+                  //console.log('new session button +++');
+                  $('#formDiv').show();
+              });
+          }
+          $('#' + $(this).val()).fadeIn(700);
+      })
+      .change();
 });
-
-//Add New Client Form
+//When the button is clicked the new client input form is opened.
 $(document).ready(function () {
-	$('#newClientBtn').click(function () {
-		$('#newClientInput').toggle(500);
-	});
-
-//New Session button with link to add event form
-	$('#newSessionBtn').click(function () {
-		console.log('new session button +++');
-		$('#formDiv').show();
-	});
+  $('#newClientBtn').click(function () {
+      $('#newClientInput').toggle(500);
+  });
+  //A new session button is accessible within the existing client form that open the add new event form on the calendar.
+  $('#newSessionBtn').click(function () {
+      //console.log('new session button +++');
+      $('#formDiv').show();
+  });
 });
-
-//Upload Image
-const fileSelect = document.getElementById('fileSelect'),
-	fileElem = document.getElementById('fileElem'),
-	fileList = document.getElementById('fileList');
-
-fileSelect.addEventListener(
-	'click',
-	function (e) {
-		if (fileElem) {
-			fileElem.click();
-		}
-		e.preventDefault(); // prevent navigation to "#"
-	},
-	false
-);
-
-fileElem.addEventListener('change', handleFiles, false);
-
-function handleFiles() {
-	if (!this.files.length) {
-		fileList.innerHTML = '<p>No files selected!</p>';
-	} else {
-		fileList.innerHTML = '';
-		const list = document.createElement('ul');
-		fileList.appendChild(list);
-		for (let i = 0; i < this.files.length; i++) {
-			const li = document.createElement('li');
-			list.appendChild(li);
-
-			const img = document.createElement('img');
-			img.src = URL.createObjectURL(this.files[i]);
-			img.height = 60;
-			img.onload = function () {
-				URL.revokeObjectURL(this.src);
-			};
-			li.appendChild(img);
-			const info = document.createElement('span');
-			info.innerHTML =
-				this.files[i].name + ': ' + this.files[i].size + ' bytes';
-			li.appendChild(info);
-		}
-	}
+//New client data is submitted to local storage and output is populated to the existing client form.
+const signUp = (e) => {
+  let formData = JSON.parse(localStorage.getItem('formData')) || [];
+  let exist =
+      formData.length &&
+      JSON.parse(localStorage.getItem('formData')).some(
+          (data) =>
+              data.fullName.toUpperCase() ==
+              document.getElementById('inputFullName').value.toUpperCase()
+      );
+  if (!exist) {
+      formData.push({
+          photo: document.getElementById('fileUpload').files[0].name,
+          fullName: document.getElementById('inputFullName').value.trim(),
+          email: document.getElementById('inputEmail').value.trim(),
+          phone: document.getElementById('inputPhone').value.trim(),
+          address: document.getElementById('inputAddress').value.trim(),
+          zip: document.getElementById('inputZip').value.trim(),
+          city: document.getElementById('inputCity').value.trim(),
+          state: document.getElementById('inputState').value.trim(),
+      });
+      localStorage.setItem('formData', JSON.stringify(formData));
+      //console.log(localStorage.getItem('formData'));
+      displayData();
+      document.getElementById('form').reset();
+      document.getElementById('fullName').focus();
+  } else {
+      alert('This is a duplicate name');
+  }
+  e.preventDefault();
+};
+function displayData() {
+  //console.log(localStorage.getItem('formData'));
+  if (localStorage.getItem('formData')) {
+      var output = document.querySelector('#output');
+      output.innerHTML = '';
+      JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+          output.innerHTML = `
+              <form  class= "data">
+                  <img src='./assets/images/${data.photo}' />
+                  <p ><b>Full Name</b><span>${data.fullName} </span></p>
+                  <p ><b>Email</b><span> ${data.email}</span></p>
+                  <p pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><b>Phone</b><span> ${data.phone}</span></p>
+                  <p><b>Address</b><span>${data.address} </span></p>
+                  <p ><b>City, State, Zip</b><span> &nbsp${data.zip}</span><span> &nbsp ${data.state}</span><span>, </span> <span>${data.city} <span></p>
+                  <button type="button" id="newSessionBtn" class="btn btn-outline-primary">New Session</button>
+              </form>`;
+      });
+      //New client fullNames are added to option selection list
+      var selectEl = document.querySelector('#fullName');
+      JSON.parse(localStorage.getItem('formData')).forEach((data) => {
+          var newOption = document.createElement('option');
+          newOption.value = data.fullName;
+          newOption.text = data.fullName;
+          selectEl.add(newOption, null);
+      });
+  }
+  //A image upload for new client is displayed on the screen
+  $(function () {
+      $('#fileUpload').change(function (event) {
+          var x = URL.createObjectURL(event.target.files[0]);
+          $('#uploadImage').attr('src', x);
+          console.log(event);
+      });
+  });
+  fetch(
+    "https://calendarific.com/api/v2/holidays?&api_key=4af538b9d1e8f0eeccdf1b51f275ed44a13b9b90&country=US&year=2022&month=2&type=national"
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      console.log(data.response.holidays[0].name);
+      console.log(data.response.holidays[0].date.iso);
+      var holidays = document.getElementById("holidays");
+      var holidayList = document.createElement("p");
+      holidayList.textContent =
+        data.response.holidays[0].name +
+        " " +
+        data.response.holidays[0].date.iso;
+      holidays.appendChild(holidayList);
+    });
+    fetch(
+      "https://api.giphy.com/v1/gifs/search?&q=fitness&api_key=iow5y3XECG4SVeN9vHRNANKzmFDXWWTY"
+    )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data)
+      var gifObj = []
+        for (var i = 0; i < 50; i++) {
+          var gifResult = []
+            gifResult = data.data[i].images.preview_gif.url;
+            gifObj.push(gifResult);
+            //var loopEnd = Math.floor(Math.random() * 50 + 1)
+        }
+        var randomGif = gifObj[Math.floor(Math.random() * gifObj.length)];
+        console.log(randomGif)  
+        console.log(gifObj)
+      //console.log(data.data[i].images.preview_gif.url);
+      // console.log(data.data[0].images.downsize_medium.url);
+      var fitness = document.getElementById("fitness");
+      var fitnessList = document.createElement("div");
+      fitnessList.innerHTML= `<img src= '${randomGif}' />`
+      //fitnessList.setAttribute("src", "data.data[i].images.preview_gif.url");
+      fitness.append(fitnessList);
+    });
 }
+displayData();
+
+// var inputImage = document.getElementById('inputImage');
+// var uploadedImage = '';
+// inputImage.addEventListener('change', function () {
+// 	var reader = new FileReader();
+// 	reader.addEventListener('load', () => {
+// 		uploadedImage = reader.result;
+// 		document.querySelector(
+// 			'#displayImage'
+// 		).style.backgroundImage = `url(${uploadedImage})`;
+// 	});
+// 	reader.readAsDataURL(this.files[0]);
+// });
 
 //Calendar Code
 window.document.onload = myFunc();
 
 function closeForm() {
-	var x = document.getElementById('formDiv');
-	var y = document.getElementsByClassName('addBTN')[0];
-	x.style.display = 'none';
-	y.style.transform = 'rotate(90deg)';
+  var x = document.getElementById("formDiv");
+  var y = document.getElementsByClassName("addBTN")[0];
+  x.style.display = "none";
+  y.style.transform = "rotate(90deg)";
 }
 
 // Start
-$('#calendar').innerHTML = calendar();
+$("#calendar").innerHTML = calendar();
 
 // short queySelector
 function _(s) {
-	return document.querySelector(s);
+  return document.querySelector(s);
 }
 
 function toggleForm() {
-	var x = document.getElementById('formDiv');
-	var y = document.getElementsByClassName('addBTN')[0];
-	if (x.style.display == 'none') {
-		x.style.display = 'block';
-		y.style.transform = 'rotate(45deg)';
-	} else {
-		x.style.display = 'none';
-		y.style.transform = 'rotate(90deg)';
-	}
+  var x = document.getElementById("formDiv");
+  var y = document.getElementsByClassName("addBTN")[0];
+  if (x.style.display == "none") {
+    x.style.display = "block";
+    y.style.transform = "rotate(45deg)";
+  } else {
+    x.style.display = "none";
+    y.style.transform = "rotate(90deg)";
+  }
 }
 
 function displayCol() {
@@ -575,20 +682,20 @@ function myFunc() {
           {eventName: 'Lunch Meeting 1', calendar: 'Home', color: 'blue', date: '2019-06-25'}
         ];*/
 
-	function delEvent(events) {
-		var a = data.indexOf(events);
-		var b = confirm(
-			'Confirm to remove event with information: \nTitle: ' +
-				events.eventName +
-				'\nType: ' +
-				events.calendar +
-				'\nDate: ' +
-				events.date._i +
-				'?'
-		);
-		if (b) {
-			var c = data.splice(a, 1);
-			/*for(var z in data)
+  function delEvent(events) {
+    var a = data.indexOf(events);
+    var b = confirm(
+      "Confirm to remove event with information: \nTitle: " +
+        events.eventName +
+        "\nType: " +
+        events.calendar +
+        "\nDate: " +
+        events.date._i +
+        "?"
+    );
+    if (b) {
+      var c = data.splice(a, 1);
+      /*for(var z in data)
                           console.log(z);*/
 			localStorage.setItem('data', JSON.stringify(data));
 
@@ -619,18 +726,18 @@ function myFunc() {
 
 //   Get Json data
 function getjson(url, callback) {
-	var self = this,
-		ajax = new XMLHttpRequest();
-	ajax.open('GET', url, true);
-	ajax.onreadystatechange = function () {
-		if (ajax.readyState == 4) {
-			if (ajax.status == 200) {
-				var data = JSON.parse(ajax.responseText);
-				return callback(data);
-			} else {
-				console.log(ajax.status);
-			}
-		}
-	};
-	ajax.send();
+  var self = this,
+    ajax = new XMLHttpRequest();
+  ajax.open("GET", url, true);
+  ajax.onreadystatechange = function () {
+    if (ajax.readyState == 4) {
+      if (ajax.status == 200) {
+        var data = JSON.parse(ajax.responseText);
+        return callback(data);
+      } else {
+        console.log(ajax.status);
+      }
+    }
+  };
+  ajax.send();
 }
