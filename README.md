@@ -39,7 +39,7 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 
 
 ## Status
-- This project is incomplete as of February 14
+- This project is complete as of February 14
 
 ## Inspired By 
 - GT Coding Bootcamp Project 1
