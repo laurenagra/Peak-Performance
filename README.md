@@ -10,6 +10,7 @@
 - [Status](#status)
 - [Inspired By](#inspired-by)
 - [Acceptance Criteria](#acceptance-criteria)
+- [Collaboratrs](#collaborators)
 
 ## User Story 
 ```
@@ -25,7 +26,7 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 [Check out our app here!](https://laurenagra.github.io/Peak-Performance/)
 
 ## Screenshots
-
+![This is how our site should look](./assets/images/Project-One.png)
 
 ## Code Used 
 - HTML
@@ -38,17 +39,17 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 
 
 ## Status
-- This project is incomplete as of February 12
+- This project is incomplete as of February 14
 
 ## Inspired By 
 - GT Coding Bootcamp Project 1
-
+- Personal Design Preference of Team
 
 ## Acceptance Criteria
 
 
 ## Collaborators 
-- Lauren Agra
-- Jamille Rooks
-- Brian Garcia
-- Derrick Hinton
+- [Lauren Agra](https://github.com/laurenagra)
+- [Jamille Rooks](https://github.com/jamillerooks)
+- [Brian Garcia](https://github.com/itsbrianfire)
+- [Derrick Hinton](https://github.com/dahint207)
