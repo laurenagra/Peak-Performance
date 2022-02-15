@@ -16,7 +16,7 @@
 ```
  AS A Professional Trainer with many clients
  I WANT TO keep track of client payments and my master schedule 
- SO THAT I can organize and track income and schedule
+ SO THAT I can organize and track my schedule
 ```
 
 ## General Information
@@ -46,6 +46,15 @@ A unique and efficient app designed to make your scheduling as a trainer simpler
 - Personal Design Preference of Team
 
 ## Acceptance Criteria
+```
+GIVEN WHEN the page loads 
+THEN a calendar and existing clients are displayed 
+THEN the user able to add a new client 
+WHEN the user needs to schedule a new session
+THEN they click on New Session or + and are able to fill out a form with information about prices and money
+AND WHEN the user clicks add event 
+THEN the session is appended to the calendar and color coordinated.
+```
 
 
 ## Collaborators 
